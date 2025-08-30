@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <title>BillMint – Delete Account & Data</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="How to delete your BillMint account and data. Options for guest users and Google sign-in, what we delete, retention, and request form." />
+  <meta name="author" content="Francis Oyitoba" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BillMint – Delete Account & Data" />
+  <meta property="og:description" content="Steps to delete your BillMint account and data. Includes a request form and email option." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://<your-github-username>.github.io/<repo>/" />
+
+  <link rel="icon" href="favicon.ico" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- Persist theme before paint -->
+  <script>
+    (function () {
+      try {
+        var pref = localStorage.getItem('theme');
+        document.documentElement.setAttribute('data-theme', pref === 'dark' ? 'dark' : 'light');
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- Premium styles (self-contained) -->
+  <style>
+    :root{
+      --space-1:.25rem; --space-2:.375rem; --space-3:.5rem; --space-4:.75rem; --space-5:1rem;
+      --space-6:1.25rem; --space-7:1.5rem; --space-8:1.75rem; --space-9:2rem;
+      --radius:14px;
+    }
+    :root[data-theme="light"]{
+      --bg:#ffffff; --text:#0f1720; --muted:#66748b; --primary:#2563eb;
+      --surface:#ffffff; --surface-2:#f6f7fb; --border:#e5e7eb;
+      --shadow-1: 0 6px 20px rgba(0,0,0,.06); --shadow-2: 0 20px 50px rgba(0,0,0,.08);
+      --link:#1e40af; --ok:#059669; --warn:#b45309;
+    }
+    :root[data-theme="dark"]{
+      --bg:#0b0f14; --text:#e6edf6; --muted:#9aa6b2; --primary:#7aa2ff;
+      --surface:#0f141b; --surface-2:#111824; --border:#1e293b;
+      --shadow-1: 0 8px 26px rgba(0,0,0,.45); --shadow-2: 0 28px 70px rgba(0,0,0,.55);
+      --link:#9bbcff; --ok:#34d399; --warn:#fbbf24;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg); color:var(--text);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:980px; margin:0 auto; padding:0 var(--space-5)}
+    .muted{color:var(--muted)}
+    .stack > * + *{margin-top:var(--space-7)}
+    .stack-sm > * + *{margin-top:var(--space-5)}
+
+    /* Header */
+    .site-header{
+      position:sticky; top:0; z-index:40;
+      background:color-mix(in srgb, var(--surface) 82%, transparent);
+      backdrop-filter:saturate(1.2) blur(12px);
+      border-bottom:1px solid var(--border);
+    }
+    .header-inner{
+      display:flex; align-items:center; justify-content:space-between; padding:.7rem 0;
+    }
+    .brand{display:flex; align-items:center; gap:.6rem; text-decoration:none; color:inherit; font-weight:800}
+    .brand-dot{width:.9rem; height:.9rem; border-radius:999px; background:var(--primary); display:inline-block}
+    .brand-text{letter-spacing:.2px}
+    .header-ctas{display:flex; align-items:center; gap:.5rem}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; border:1px solid var(--border); border-radius:10px; padding:.5rem .75rem; background:var(--surface); color:var(--text); text-decoration:none; box-shadow:var(--shadow-1)}
+    .btn-primary{background:var(--primary); color:#fff; border-color:transparent}
+    .btn-ghost{background:transparent}
+    .theme-toggle{
+      display:inline-flex; gap:.45rem; align-items:center; border:1px solid var(--border); border-radius:999px;
+      padding:.45rem .7rem; background:var(--surface); color:var(--text); cursor:pointer;
+    }
+    .icon-sun{display:none}
+    [data-theme="dark"] .icon-sun{display:inline-block}
+    [data-theme="dark"] .icon-moon{display:none}
+    .skip-link{position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden}
+    .skip-link:focus{left: var(--space-5); top: var(--space-5); width:auto; height:auto; padding:.5rem .75rem; background:var(--surface); border:1px solid var(--border); border-radius:8px}
+
+    /* Hero & sections */
+    .hero{padding: 3.25rem 0 1.2rem; border-bottom:1px solid var(--border); background:linear-gradient(180deg, color-mix(in srgb, var(--surface-2) 40%, transparent), transparent 60%)}
+    .eyebrow{font-size:.9rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin:0 0 .4rem}
+    h1{font-size:clamp(1.7rem, 1.1rem + 2vw, 2.4rem); line-height:1.2; margin:.25rem 0 .5rem}
+    .lead{font-size:1.08rem; line-height:1.7; color:var(--muted); margin:.25rem 0}
+    .section{padding:1.6rem 0}
+    .card{
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+      padding: clamp(1rem, .9rem + 1vw, 1.25rem); box-shadow:var(--shadow-1);
+    }
+    h2{margin:0 0 .6rem; font-size: clamp(1.25rem, 1.05rem + .8vw, 1.6rem)}
+    h3{margin:0 0 .4rem; font-size: clamp(1.05rem, .95rem + .5vw, 1.25rem)}
+    p{margin:.4rem 0 0; line-height:1.75}
+    ul{margin:.2rem 0 0; padding-left:1.1rem}
+    li{margin:.3rem 0}
+
+    .notice{display:flex; gap:.6rem; align-items:flex-start; border-left:3px solid var(--primary); padding:.75rem .9rem; background:var(--surface-2); border-radius:10px}
+
+    /* Form */
+    form{display:grid; grid-template-columns:1fr; gap:.9rem}
+    @media(min-width:720px){ form{ grid-template-columns: 1fr 1fr; } }
+    .full{grid-column:1/-1}
+    .field{display:flex; flex-direction:column; gap:.35rem}
+    .field label{font-weight:600; font-size:.98rem}
+    .field small{color:var(--muted); font-size:.9rem}
+    .control{width:100%; padding:.7rem .8rem; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text)}
+    .control:focus{outline:2px solid var(--primary); outline-offset:2px}
+    textarea.control{min-height:150px; resize:vertical}
+    .consents{display:flex; flex-direction:column; gap:.55rem}
+    .help{font-size:.95rem; color:var(--muted)}
+    .success, .error{padding:.75rem .9rem; border-radius:10px}
+    .success{background:color-mix(in srgb, var(--ok) 12%, transparent); border:1px solid color-mix(in srgb, var(--ok) 35%, var(--border))}
+    .error{background:color-mix(in srgb, #ef4444 12%, transparent); border:1px solid color-mix(in srgb, #ef4444 35%, var(--border))}
+
+    /* Honeypot (visually hidden but focusable for AT) */
+    .hp-wrap{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+    .footer{border-top:1px solid var(--border); padding: 1.25rem 0; margin-top: 1rem; text-align:center; color:var(--muted)}
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="BillMint">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">BillMint</span>
+      </a>
+      <div class="header-ctas">
+        <a class="btn btn-ghost" href="https://francisoyitoba.com" target="_blank" rel="noopener">Back to Portfolio</a>
+        <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon icon-moon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun icon-sun" aria-hidden="true"></i>
+          <span class="theme-label">Dark</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">Account & Data</p>
+        <h1>BillMint – Delete Account &amp; Data</h1>
+        <p class="lead">This page explains how to delete your BillMint account and data.</p>
+        <div class="notice" role="note">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+          <p class="muted">Choose the option that applies to you: guest (no account) or signed in with Google. You can email us or submit the form below.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="section">
+      <div class="container stack">
+        <article class="card">
+          <h2>If you don’t use an account (guest mode)</h2>
+          <p>Your data only lives on your device. To remove it:</p>
+          <ul>
+            <li>Uninstall the app, or</li>
+            <li>Clear app data (<em>Settings → Apps → BillMint → Storage → Clear data</em>).</li>
+          </ul>
+          <p><strong>No server data exists for guest users.</strong></p>
+        </article>
+
+        <article class="card">
+          <h2>If you signed in with Google</h2>
+          <p>You can request deletion of your account and all cloud data we store.</p>
+        </article>
+
+        <article class="card">
+          <h2>How to request deletion</h2>
+          <h3>1) Email us</h3>
+          <p>Send an email to <a href="mailto:contact@francisoyitoba.com">contact@francisoyitoba.com</a> from the same email you used to sign in.<br />
+            <strong>Subject:</strong> BillMint – Delete my account</p>
+          <ul>
+            <li><strong>Account email:</strong> (the Google email you used in BillMint)</li>
+            <li><strong>Business name:</strong> (as set in your profile)</li>
+          </ul>
+
+          <h3 style="margin-top:1rem;">2) Fill the form on this page</h3>
+          <p>Provide the same details so we can verify ownership.</p>
+
+          <!-- Success & error messages -->
+          <div id="msg" class="stack-sm" style="display:none;">
+            <div id="msgText" class=""></div>
+          </div>
+
+          <!-- Delete Request Form -->
+          <form id="deleteForm" action="https://formspree.io/f/yourEndpoint" method="POST" novalidate>
+            <!-- Honeypot -->
+            <div class="hp-wrap" aria-hidden="true">
+              <label>Leave this field empty
+                <input type="text" name="website" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
+
+            <input type="hidden" name="_subject" value="BillMint – Delete my account" />
+            <input type="hidden" name="form" value="billmint-delete-request" />
+            <input type="hidden" name="page" value="Delete Account & Data" />
+
+            <div class="field">
+              <label for="email">Account email (Google)</label>
+              <input id="email" class="control" type="email" name="email" required placeholder="you@gmail.com" autocomplete="email" />
+              <small class="help">Use the same email you used to sign in to BillMint.</small>
+            </div>
+
+            <div class="field">
+              <label for="biz">Business name</label>
+              <input id="biz" class="control" type="text" name="business_name" required placeholder="Your business name (as in profile)" />
+            </div>
+
+            <div class="field full">
+              <label for="msgBody">Optional message</label>
+              <textarea id="msgBody" class="control" name="message" placeholder="Add any extra details that can help us verify."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="challenge">Type <strong>BILL</strong> to confirm</label>
+              <input id="challenge" class="control" name="challenge" required placeholder="BILL" inputmode="latin" />
+            </div>
+
+            <div class="field full consents">
+              <label><input type="checkbox" name="confirm_same_email" required /> I am the owner of this account (same email as above).</label>
+              <label><input type="checkbox" name="confirm_delete" required /> I request deletion of my BillMint account and cloud data.</label>
+            </div>
+
+            <div class="full" style="display:flex; gap:.6rem; align-items:center; margin-top:.2rem;">
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Submit request</button>
+              <button type="reset" class="btn">Clear</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>What we delete</h2>
+          <ul>
+            <li>Documents (receipts &amp; invoices)</li>
+            <li>Customers</li>
+            <li>Business profile (name, address, phone, payment info, currency, logo URL)</li>
+          </ul>
+          <p>Data on your device isn’t deleted by us—please uninstall or clear app data if needed.</p>
+        </article>
+
+        <article class="card">
+          <h2>What we may retain (temporarily)</h2>
+          <p>For fraud prevention, dispute handling, and legal compliance we may keep:</p>
+          <ul>
+            <li>Minimal server logs and backups for up to 30 days, then permanently purged.</li>
+            <li>Aggregated, de-identified analytics that cannot identify you.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Timeline &amp; confirmation</h2>
+          <p>We aim to complete verified deletion requests within 7 days. You’ll receive an email confirmation when deletion is done.</p>
+          <h3>Can I cancel the request?</h3>
+          <p>Yes—reply to our confirmation email <em>before</em> deletion is completed.</p>
+        </article>
+
+        <article class="card">
+          <h2>Need help?</h2>
+          <p>Email <a href="mailto:contact@francisoyitoba.com">contact@francisoyitoba.com</a> and we’ll assist you.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="y"></span> BillMint</div>
+      <div class="muted">This page supports light/dark theme (toggle top right).</div>
+    </div>
+  </footer>
+
+  <!-- Scripts: theme toggle + form (anti-bot + Formspree + mailto fallback) -->
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Theme toggle (persist)
+    const toggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    function setTheme(mode){
+      root.setAttribute('data-theme', mode);
+      try { localStorage.setItem('theme', mode); } catch(e){}
+      const dark = mode === 'dark';
+      toggle?.setAttribute('aria-pressed', dark ? 'true' : 'false');
+      const label = toggle?.querySelector('.theme-label');
+      if (label) label.textContent = dark ? 'Light' : 'Dark';
+    }
+    if (toggle){
+      setTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+      toggle.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        setTheme(next);
+      });
+    }
+
+    // Form: anti-bot + AJAX submit to Formspree + mailto fallback
+    (function(){
+      const form = document.getElementById('deleteForm');
+      const msgBox = document.getElementById('msg');
+      const msgText = document.getElementById('msgText');
+      const start = Date.now();
+
+      function show(type, text){
+        msgBox.style.display = 'block';
+        msgText.className = type === 'success' ? 'success' : 'error';
+        msgText.textContent = text;
+        msgBox.scrollIntoView({behavior:'smooth', block:'nearest'});
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Anti-bot checks
+        const hp = form.querySelector('input[name="website"]');
+        if (hp && hp.value.trim() !== '') {
+          show('error', 'Submission blocked (bot detected).');
+          return;
+        }
+        if (Date.now() - start < 3000) { // time-to-submit gate
+          show('error', 'Please take a moment to review your request, then submit again.');
+          return;
+        }
+        const challenge = form.challenge.value.trim().toUpperCase();
+        if (challenge !== 'BILL') {
+          show('error', 'Please type BILL in the confirmation field.');
+          form.challenge.focus();
+          return;
+        }
+
+        // Build payload
+        const data = new FormData(form);
+
+        // If Formspree endpoint not set, fallback to mailto
+        const action = form.getAttribute('action') || '';
+        if (action.includes('yourEndpoint')) {
+          const email = encodeURIComponent(form.email.value.trim());
+          const biz   = encodeURIComponent(form.business_name.value.trim());
+          const extra = encodeURIComponent(form.message.value.trim());
+          const body  = `Account email: ${email}%0D%0ABusiness name: ${biz}%0D%0A%0D%0A${extra}`;
+          const mail  = `mailto:contact@francisoyitoba.com?subject=BillMint%20%E2%80%93%20Delete%20my%20account&body=${body}`;
+          window.location.href = mail;
+          show('success', 'Email compose opened. Send it to complete your request.');
+          form.reset();
+          return;
+        }
+
+        try {
+          const res = await fetch(action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
+          if (res.ok) {
+            show('success', 'Request received. We’ll verify ownership and email you a confirmation.');
+            form.reset();
+          } else {
+            show('error', 'Could not submit right now. Please email contact@francisoyitoba.com.');
+          }
+        } catch (err) {
+          show('error', 'Network error. Please try again or email contact@francisoyitoba.com.');
+        }
+      });
+    })();
+  </script>
+
+  <!-- JSON-LD (WebPage) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"BillMint – Delete Account & Data",
+    "description":"Instructions and form to request deletion of your BillMint account and data.",
+    "inLanguage":"en",
+    "dateModified":"2025-08-29",
+    "publisher":{
+      "@type":"Person",
+      "name":"Francis Oyitoba",
+      "url":"https://francisoyitoba.com",
+      "email":"mailto:contact@francisoyitoba.com"
+    }
+  }
+  </script>
+</body>
+</html>
