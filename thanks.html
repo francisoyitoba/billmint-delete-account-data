@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <title>BillMint – Request Received</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Thank you. Your BillMint deletion request has been received." />
+  <link rel="icon" href="favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <script>
+    (function(){ try { var pref = localStorage.getItem('theme'); document.documentElement.setAttribute('data-theme', pref === 'dark' ? 'dark' : 'light'); } catch(e) {} })();
+  </script>
+
+  <style>
+    :root{ --space-5:1rem; --radius:14px; }
+    :root[data-theme="light"]{
+      --bg:#ffffff; --text:#0f1720; --muted:#66748b; --primary:#2563eb;
+      --surface:#ffffff; --surface-2:#f6f7fb; --border:#e5e7eb;
+      --shadow-1: 0 6px 20px rgba(0,0,0,.06);
+    }
+    :root[data-theme="dark"]{
+      --bg:#0b0f14; --text:#e6edf6; --muted:#9aa6b2; --primary:#7aa2ff;
+      --surface:#0f141b; --surface-2:#111824; --border:#1e293b;
+      --shadow-1: 0 8px 26px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--text);}
+    a{color:#1e40af} [data-theme="dark"] a{color:#9bbcff}
+    .container{max-width:900px; margin:0 auto; padding:0 var(--space-5)}
+    .site-header{position:sticky; top:0; z-index:40; background:color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter:saturate(1.2) blur(12px); border-bottom:1px solid var(--border);}
+    .header-inner{display:flex; align-items:center; justify-content:space-between; padding:.7rem 0;}
+    .brand{display:flex; align-items:center; gap:.6rem; text-decoration:none; color:inherit; font-weight:800}
+    .brand-dot{width:.9rem; height:.9rem; border-radius:999px; background:var(--primary); display:inline-block}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; border:1px solid var(--border); border-radius:10px; padding:.5rem .75rem; background:var(--surface); color:var(--text); text-decoration:none; box-shadow:var(--shadow-1)}
+    .btn-primary{background:var(--primary); color:#fff; border-color:transparent}
+    .hero{padding: 3rem 0 2rem; border-bottom:1px solid var(--border); background:linear-gradient(180deg, color-mix(in srgb, var(--surface-2) 40%, transparent), transparent 60%)}
+    h1{font-size:clamp(1.7rem, 1.1rem + 2vw, 2.3rem); margin:.25rem 0 .5rem}
+    .lead{font-size:1.08rem; color:var(--muted)}
+    .card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:clamp(1rem, .9rem + 1vw, 1.25rem); box-shadow:var(--shadow-1); margin: 1.5rem 0;}
+    .footer{border-top:1px solid var(--border); padding: 1.25rem 0; margin-top: 1rem; text-align:center; color:var(--muted)}
+    .theme-toggle{display:inline-flex; gap:.45rem; align-items:center; border:1px solid var(--border); border-radius:999px; padding:.45rem .7rem; background:var(--surface); color:var(--text); cursor:pointer;}
+    .icon-sun{display:none} [data-theme="dark"] .icon-sun{display:inline-block} [data-theme="dark"] .icon-moon{display:none}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">BillMint</span>
+      </a>
+      <div style="display:flex; gap:.5rem; align-items:center;">
+        <a class="btn" href="index.html"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon icon-moon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun icon-sun" aria-hidden="true"></i>
+          <span class="theme-label">Dark</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Request received</h1>
+        <p class="lead">Thanks. If you submitted the form with the correct account email, we’ll verify ownership and start deletion.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card">
+          <h2>What happens next</h2>
+          <ul>
+            <li>We verify you are the account owner (email & business name).</li>
+            <li>You’ll receive a confirmation email once deletion is complete (usually within 7 days).</li>
+            <li>If you made a mistake, reply to our email to cancel before deletion is finalized.</li>
+          </ul>
+          <p>Need help? Email <a href="mailto:contact@francisoyitoba.com">contact@francisoyitoba.com</a>.</p>
+        </div>
+        <div class="card">
+          <a class="btn btn-primary" href="index.html"><i class="fa-solid fa-file-pen"></i> Submit another request</a>
+          <a class="btn" href="https://francisoyitoba.com" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> Portfolio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="y"></span> BillMint</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const toggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    function setTheme(mode){
+      root.setAttribute('data-theme', mode);
+      try { localStorage.setItem('theme', mode); } catch(e){}
+      const dark = mode === 'dark';
+      toggle?.setAttribute('aria-pressed', dark ? 'true' : 'false');
+      const label = toggle?.querySelector('.theme-label');
+      if (label) label.textContent = dark ? 'Light' : 'Dark';
+    }
+    if (toggle){
+      setTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+      toggle.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        setTheme(next);
+      });
+    }
+  </script>
+</body>
+</html>
